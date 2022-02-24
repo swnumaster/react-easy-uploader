@@ -1,0 +1,135 @@
+@li-size: 104px;
+@li-padding: 0px;
+@comm-radius: 50%;
+@img-radius: 50%;
+@del-btn-size: 30px;
+@del-btn-bottom: 34px;
+@del-btn-right: 34px;
+@img-fit: cover;
+
+/* operate bar */
+@keyframes chueasy-ani-visible {
+    from {visibility: hidden; opacity: 0;}
+    to {visibility: visible; opacity: 1;}
+}
+
+@keyframes chueasy-ani-hidden {
+    from {visibility: visible; opacity: 1;}
+    to {visibility: hidden; opacity: 0;}
+}
+
+.chueasy-uploader-wrapper-2  {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;  /* Safari */
+    justify-content: left;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+
+    li {
+        width: @li-size;
+        height: @li-size;
+        padding: @li-padding;
+        box-sizing: border-box;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        border: 1px solid #d9d9d9;
+        border-radius: @comm-radius;
+        position: relative;
+
+        .chueasy-img-wrapper {
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: @img-fit;
+                border-radius: @img-radius;
+            }
+
+            /* progress bar */
+            .chueasy-progressbar {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                background-color: rgba(0, 0, 0, 0.4);
+                border-radius: @comm-radius;
+
+                > div { /* ">": div children in the first tier  */
+                    background-color: white;
+                    height: 8px;
+                    width: 80%;
+                    border-radius: 4px;
+                    margin: auto;
+                    overflow: hidden;
+
+                    > div {
+                        background-color: #666;
+                        height: 100%;
+                        width: 0%;
+                    }
+                }
+            }
+
+            /* operate bar */
+            .chueasy-operatebar {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                background-color: rgba(0, 0, 0, 0.5);
+                visibility: hidden;
+                border-radius: @comm-radius;
+            
+                &.chueasy-visible {
+                    animation-name: chueasy-ani-visible;
+                    animation-duration: 0.5s;
+                    visibility: visible;
+                    opacity: 1;
+                }
+            
+                &.chueasy-hidden {
+                    animation-name: chueasy-ani-hidden;
+                    animation-duration: 0.5s;
+                    visibility: hidden;
+                    opacity: 0;
+                }
+                
+                .uploaded-img-del {
+                    width: @del-btn-size;
+                    height: @del-btn-size;
+                    background-image: url("../images/delete.svg");
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: 70%;
+                    cursor: pointer;
+                    position: absolute;
+                    bottom: @del-btn-bottom;
+                    right: @del-btn-right;
+                }
+            }
+        }
+    }
+
+    .chueasy-btn-upload {
+        border-style: dashed;
+        cursor: pointer;
+        text-align: center;
+        background-color: #fafafa;
+        background-image: url("../images/upload.svg");
+        background-repeat: no-repeat;
+        background-position: center 26px;
+        background-size: 20%;
+        cursor: pointer;
+        padding-top: 54px;
+    }
+}

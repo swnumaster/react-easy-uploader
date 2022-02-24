@@ -1,0 +1,126 @@
+/* operate bar */
+@keyframes chueasy-ani-visible {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+@keyframes chueasy-ani-hidden {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+.chueasy-uploader-wrapper-2 {
+  width: 100%;
+  display: flex;
+  display: -webkit-flex;
+  /* Safari */
+  justify-content: left;
+  flex-flow: row wrap;
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.chueasy-uploader-wrapper-2 li {
+  width: 104px;
+  height: 104px;
+  padding: 0px;
+  box-sizing: border-box;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #d9d9d9;
+  border-radius: 50%;
+  position: relative;
+}
+.chueasy-uploader-wrapper-2 li .chueasy-img-wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  /* progress bar */
+  /* operate bar */
+}
+.chueasy-uploader-wrapper-2 li .chueasy-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.chueasy-uploader-wrapper-2 li .chueasy-img-wrapper .chueasy-progressbar {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+.chueasy-uploader-wrapper-2 li .chueasy-img-wrapper .chueasy-progressbar > div {
+  /* ">": div children in the first tier  */
+  background-color: white;
+  height: 8px;
+  width: 80%;
+  border-radius: 4px;
+  margin: auto;
+  overflow: hidden;
+}
+.chueasy-uploader-wrapper-2 li .chueasy-img-wrapper .chueasy-progressbar > div > div {
+  background-color: #666;
+  height: 100%;
+  width: 0%;
+}
+.chueasy-uploader-wrapper-2 li .chueasy-img-wrapper .chueasy-operatebar {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  border-radius: 50%;
+}
+.chueasy-uploader-wrapper-2 li .chueasy-img-wrapper .chueasy-operatebar.chueasy-visible {
+  animation-name: chueasy-ani-visible;
+  animation-duration: 0.5s;
+  visibility: visible;
+  opacity: 1;
+}
+.chueasy-uploader-wrapper-2 li .chueasy-img-wrapper .chueasy-operatebar.chueasy-hidden {
+  animation-name: chueasy-ani-hidden;
+  animation-duration: 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+.chueasy-uploader-wrapper-2 li .chueasy-img-wrapper .chueasy-operatebar .uploaded-img-del {
+  width: 30px;
+  height: 30px;
+  background-image: url("../images/delete.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 70%;
+  cursor: pointer;
+  position: absolute;
+  bottom: 34px;
+  right: 34px;
+}
+.chueasy-uploader-wrapper-2 .chueasy-btn-upload {
+  border-style: dashed;
+  text-align: center;
+  background-color: #fafafa;
+  background-image: url("../images/upload.svg");
+  background-repeat: no-repeat;
+  background-position: center 26px;
+  background-size: 20%;
+  cursor: pointer;
+  padding-top: 54px;
+}
