@@ -1,5 +1,10 @@
+demo
 src
-examples
 .babelrc
+.gitattrbutes
 .gitignore
+package-lock.json
+README-for-developers.md
 webpack.config.js
+p1.jpg
+p2.jpg

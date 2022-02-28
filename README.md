@@ -59,3 +59,7 @@
 ```
 
 # Change log
+
+    v1.0.1
+
+        ignore unecessary files

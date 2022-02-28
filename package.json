@@ -1,6 +1,6 @@
 {
   "name": "react-easy-uploader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A react image uploader component",
   "main": "dist/index.js",
   "author": "Nathan Jiang",
@@ -17,7 +17,7 @@
     "transpile": "lessc src/static/css/style1.less src/static/css/style1.css && lessc src/static/css/style2.less src/static/css/style2.css && babel src -d dist --copy-files",
     "prepublishOnly": "npm run transpile",
     "build": "webpack --mode production",
-    "deploy": "gh-pages -d demos/dist",
+    "deploy": "gh-pages -d demo/dist",
     "publish-demo": "npm run build && npm run deploy"
   },
   "peerDependencies": {
