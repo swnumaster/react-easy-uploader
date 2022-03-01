@@ -1,10 +1,10 @@
 0. Basic
 
     yarn start
-    yarn run build  (build a package into examples/dist)
+    yarn run build  (build files and put built files into demo/dist/)
     npm config set registry https://registry.npmjs.com/
-    yarn publish  (publish dist to the npm platform, need to input login password and one-time password)
-    yarn publish-demo (publish examples/dist to gitHub Pages)
+    yarn publish  (publish the package to the npm platform, need to input login password and one-time password)
+    yarn publish-demo (publish demo/dist/ to gitHub Pages)
 
 1. To solve the CORS issue
 
@@ -47,7 +47,9 @@
 
 6. webpack打包图片并让demo支持使用包里的图片
 
-    npm install file-loader --save-dev 或 yarn add file-loader --dev
+    # Use images in css files (webpack4) (已不推荐)
+
+    npm install file-loader svg-url-loader --save-dev 或 yarn add file-loader svg-url-loader --dev
 
     修改webpack.config.js的module/rules配置，增加：
         {
@@ -64,6 +66,44 @@
                 }
             ]
         },
+        {
+            test: /\.svg$/,
+            use: ["svg-url-loader"]
+        },
+
+    # Use images in css files (webpack5) (已不推荐)
+
+    npm install file-loader --save-dev 或 yarn add file-loader --dev
+
+    修改webpack.config.js的module/rules配置，增加：
+        {
+            test: /\.(png|jpg|jpeg|gif|svg)$/,
+            use: [
+                {
+                    loader: "file-loader",
+                    options: {
+                        name: "[name].[ext]",
+                        publicPath: "./images", // html的img标签src所指向图片的位置，基本与outputPath一致
+                        outputPath: "images",   // 打包图片放置的位置，这个路径是相对example/dist路径的
+                        esModule: false,
+                    }
+                }
+            ],
+            type: "javascript/auto"
+        },
+    
+    # Use images in css files (webpack5) (推荐)
+
+    修改webpack.config.js的module/rules配置，增加：
+        {
+            test: /\.(png|jpg|jpeg|gif|svg)$/,
+            type: "asset/resource", // for webpack5
+        },
+
+    修改webpack.config.js的output配置，增加：
+        assetModuleFilename: "images/[name].[ext]"
+
+    # Use images in js files
 
     修改examples/index.js，用模块化的方式引用图片：
         var imgUrl1 = require('../../src/static/images/p1.jpg');    // 模块化方式引用图片路径，这样引用的图片才可以打包进dist文件夹
